@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Run OWASP Dependency Check
       uses: dependency-check/Dependency-Check_Action@main
@@ -44,7 +44,7 @@ jobs:
         target: 'http://localhost:5000'
         
     - name: Upload Security Reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-reports
         path: |

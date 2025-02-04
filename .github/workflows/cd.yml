@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
         
@@ -35,13 +35,13 @@ jobs:
         dotnet publish -c Release -o ./publish
         
     - name: Upload Frontend Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: frontend-build
         path: Frontend-React/build
         
     - name: Upload Backend Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: backend-build
         path: Backend-dotnet/publish
@@ -52,16 +52,16 @@ jobs:
     environment: production
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Download Frontend Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: frontend-build
         path: frontend-build
         
     - name: Download Backend Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: backend-build
         path: backend-build
@@ -72,7 +72,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     - name: Deploy Backend
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: 'notepadplus-api'
         package: './backend-build'
