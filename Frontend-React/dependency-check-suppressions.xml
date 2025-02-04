@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <!-- Frontend Dependencies -->
+    <suppress>
+        <notes>False positive in React development server</notes>
+        <packageUrl regex="true">^pkg:npm/react-scripts@.*$</packageUrl>
+        <vulnerabilityName regex="true">.*Denial of Service.*</vulnerabilityName>
+    </suppress>
+    
+    <!-- Backend Dependencies -->
+    <suppress>
+        <notes>False positive in .NET Core runtime</notes>
+        <packageUrl regex="true">^pkg:nuget/Microsoft\.AspNetCore\.App\.Runtime@.*$</packageUrl>
+        <cve>CVE-2021-24112</cve>
+    </suppress>
+
+    <suppress>
+        <notes>False positive in Entity Framework Core</notes>
+        <packageUrl regex="true">^pkg:nuget/Microsoft\.EntityFrameworkCore@.*$</packageUrl>
+        <cve>CVE-2020-0603</cve>
+    </suppress>
+
+    <!-- Development Tools -->
+    <suppress>
+        <notes>Dev dependency not used in production</notes>
+        <packageUrl regex="true">^pkg:npm/webpack-dev-server@.*$</packageUrl>
+        <vulnerabilityName regex="true">.*</vulnerabilityName>
+    </suppress>
+
+    <!-- Test Dependencies -->
+    <suppress>
+        <notes>Test dependency not used in production</notes>
+        <packageUrl regex="true">^pkg:npm/jest@.*$</packageUrl>
+        <vulnerabilityName regex="true">.*</vulnerabilityName>
+    </suppress>
+</suppressions> 

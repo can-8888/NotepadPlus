@@ -1,0 +1,177 @@
+.share-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.share-dialog {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Limit height to 90% of viewport height */
+}
+
+.share-dialog h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.search-container {
+    margin-bottom: 1rem;
+    flex-shrink: 0; /* Prevent search box from shrinking */
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.users-list {
+    flex: 1; /* Take remaining space */
+    min-height: 100px; /* Minimum height */
+    max-height: calc(90vh - 200px); /* Adjust based on other elements */
+    overflow-y: auto;
+    margin: 0.5rem 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background: white;
+}
+
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+    background: white;
+}
+
+.user-item:hover {
+    background-color: #f8f9fa;
+}
+
+.user-item:last-child {
+    border-bottom: none;
+}
+
+.user-item button {
+    padding: 0.4rem 1rem;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    margin-left: 1rem;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.user-item button:hover {
+    background-color: #1976D2;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    flex: 1;
+    min-width: 0; /* Allow text truncation */
+}
+
+.username {
+    font-weight: 500;
+    color: #333;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email {
+    color: #666;
+    font-size: 0.85rem;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-email {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.dialog-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.dialog-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.cancel-button {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.cancel-button:hover {
+    background-color: #e0e0e0;
+}
+
+.loading, .error, .no-results, .search-hint {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+.error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    font-style: normal;
+}
+
+.searching-message,
+.search-hint {
+    padding: 1rem;
+    text-align: center;
+    color: #666;
+}
+
+.searching-message {
+    font-style: italic;
+}
+
+.search-hint {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+} 

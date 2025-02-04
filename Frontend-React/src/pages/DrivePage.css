@@ -1,0 +1,295 @@
+.drive-page {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+}
+
+.drive-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ddd;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-left h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.header-actions {
+    display: flex;
+    gap: 3.5rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search-box {
+    position: relative;
+    width: 250px;
+    margin-right: 1rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 32px 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.upload-button,
+.create-new-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.upload-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.create-new-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+.empty-drive {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.create-folder-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.tips {
+    text-align: left;
+    max-width: 500px;
+    margin: 2rem auto;
+    color: #666;
+}
+
+.tips ol {
+    padding-left: 1.5rem;
+}
+
+.tips li {
+    margin: 0.5rem 0;
+}
+
+.files-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.file-item {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.75rem;
+    min-height: 100px;
+}
+
+.file-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.file-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    width: auto;
+    text-align: center;
+}
+
+.file-info {
+    width: 100%;
+    text-align: center;
+}
+
+.file-name {
+    font-weight: 500;
+    color: #333;
+    word-break: break-word;
+    margin-bottom: 0.25rem;
+}
+
+.file-meta {
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.file-item:hover .file-actions {
+    opacity: 1;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.action-button:hover {
+    background-color: #eee;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb-item {
+    background: none;
+    border: none;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+}
+
+.breadcrumb-item:hover:not(.current) {
+    background-color: #f0f0f0;
+}
+
+.breadcrumb-item.current {
+    cursor: default;
+    color: #666;
+}
+
+.breadcrumb-separator {
+    color: #666;
+}
+
+.folder-item {
+    cursor: pointer;
+    background-color: #f8f9fa;
+}
+
+.folder-item:hover {
+    background-color: #f0f0f0;
+}
+
+.folder-item .file-icon {
+    color: #ffd700;
+}
+
+.new-folder-dialog {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.new-folder-dialog input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.new-folder-dialog button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-folder-dialog button:first-of-type {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.new-folder-dialog button:last-of-type {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.drive-content {
+    flex: 1;
+    overflow-y: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-top: 0;
+}
+
+.files-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+    background: transparent;
+    box-shadow: none;
+} 

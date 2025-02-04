@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../NotepadPlusApi"
+		},
+		{
+			"path": "../../NotepadPlus"
+		}
+	],
+	"settings": {}
+}
