@@ -52,10 +52,15 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore Dependencies
-      run: dotnet restore
+      run: dotnet restore NotepadPlusApi.csproj
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build NotepadPlusApi.csproj --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal 
+      run: dotnet test NotepadPlusApi.csproj --no-build --verbosity normal
+
+    - name: Check for vulnerable dependencies
+      run: |
+        dotnet list NotepadPlusApi.csproj package --vulnerable
+        cd ../Frontend-React && npm audit
