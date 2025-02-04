@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotepadPlusApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c613635a1f335e463d063a2082f3ec7a26d97d1b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+418b5a95f8a7e1b3e2e7fd78bb494bdccacfbadb")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotepadPlusApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotepadPlusApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
