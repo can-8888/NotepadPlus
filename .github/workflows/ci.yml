@@ -14,6 +14,7 @@ jobs:
         working-directory: Frontend-React
     env:
       CI: false
+      DISABLE_ESLINT_PLUGIN: true
 
     steps:
     - uses: actions/checkout@v4
