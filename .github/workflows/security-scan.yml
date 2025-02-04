@@ -25,7 +25,6 @@ jobs:
           --failOnCVSS 7
           --enableRetired
           --prettyPrint
-          --showSuppressed
           --enableExperimental
           
     - name: Run Snyk to check for vulnerabilities
