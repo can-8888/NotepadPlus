@@ -1,0 +1,92 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Build Frontend
+      working-directory: Frontend-React
+      run: |
+        npm ci
+        npm run build
+        
+    - name: Build Backend
+      working-directory: Backend-dotnet
+      run: |
+        dotnet restore
+        dotnet build --configuration Release
+        dotnet publish -c Release -o ./publish
+        
+    - name: Upload Frontend Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-build
+        path: Frontend-React/build
+        
+    - name: Upload Backend Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-build
+        path: Backend-dotnet/publish
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Download Frontend Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: frontend-build
+        path: frontend-build
+        
+    - name: Download Backend Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: backend-build
+        path: backend-build
+    
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: Deploy Backend
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'notepadplus-api'
+        package: './backend-build'
+        
+    - name: Deploy Frontend
+      uses: Azure/static-web-apps-deploy@v1
+      with:
+        action: "upload"
+        azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        app_location: "frontend-build"
+        output_location: ""
+        skip_app_build: true
+        
+    - name: Configure Environment
+      run: |
+        echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> frontend-build/.env.production 

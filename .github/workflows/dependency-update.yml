@@ -1,0 +1,33 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly
+  workflow_dispatch:
+
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    
+    - name: Update Dependencies
+      run: |
+        cd Frontend-React
+        npm update
+        npm audit fix
+    
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: 'chore(deps): update dependencies'
+        branch: 'deps/update'
+        commit-message: 'chore(deps): update dependencies'
+        body: 'Automated dependency updates'
+        labels: dependencies 
