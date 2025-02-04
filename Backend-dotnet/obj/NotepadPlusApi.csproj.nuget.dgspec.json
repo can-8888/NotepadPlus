@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\_master\\v5\\NotepadPlusApi\\NotepadPlusApi.csproj": {}
+    "D:\\_master\\v5\\NotepadPlus\\Backend-dotnet\\NotepadPlusApi.csproj": {}
   },
   "projects": {
-    "D:\\_master\\v5\\NotepadPlusApi\\NotepadPlusApi.csproj": {
+    "D:\\_master\\v5\\NotepadPlus\\Backend-dotnet\\NotepadPlusApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\_master\\v5\\NotepadPlusApi\\NotepadPlusApi.csproj",
+        "projectUniqueName": "D:\\_master\\v5\\NotepadPlus\\Backend-dotnet\\NotepadPlusApi.csproj",
         "projectName": "NotepadPlusApi",
-        "projectPath": "D:\\_master\\v5\\NotepadPlusApi\\NotepadPlusApi.csproj",
+        "projectPath": "D:\\_master\\v5\\NotepadPlus\\Backend-dotnet\\NotepadPlusApi.csproj",
         "packagesPath": "C:\\Users\\8888\\.nuget\\packages\\",
-        "outputPath": "D:\\_master\\v5\\NotepadPlusApi\\obj\\",
+        "outputPath": "D:\\_master\\v5\\NotepadPlus\\Backend-dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\8888\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -72,6 +72,10 @@
               "version": "[8.0.1, )"
             },
             "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
               "version": "[8.0.0, )"
             },

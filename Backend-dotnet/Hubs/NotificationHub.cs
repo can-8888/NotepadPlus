@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.SignalR;
 using NotepadPlusApi.Models;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace NotepadPlusApi.Hubs;
 
@@ -17,15 +18,21 @@ public class NotificationHub : Hub
     {
         try
         {
-            var userIdHeader = Context.GetHttpContext()?.Request.Headers["UserId"].FirstOrDefault();
-            if (string.IsNullOrEmpty(userIdHeader))
+            var context = Context.GetHttpContext();
+            var token = context?.Request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "");
+            var userIdHeader = context?.Request.Headers["UserId"].FirstOrDefault();
+
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(userIdHeader))
             {
-                _logger.LogWarning("User ID not found in headers");
-                throw new HubException("User ID not found");
+                _logger.LogWarning("Missing token or userId in headers");
+                Context.Abort();
+                return;
             }
 
-            _logger.LogInformation($"Client connected: {Context.ConnectionId}, User: {userIdHeader}");
+            // Here you can add your token validation logic if needed
+
             await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userIdHeader}");
+            _logger.LogInformation($"Client connected: {Context.ConnectionId}, User: {userIdHeader}");
             await base.OnConnectedAsync();
         }
         catch (Exception ex)
@@ -43,7 +50,6 @@ public class NotificationHub : Hub
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"User_{userIdHeader}");
             _logger.LogInformation($"Client disconnected: {Context.ConnectionId}, User: {userIdHeader}");
         }
-
         await base.OnDisconnectedAsync(exception);
     }
 
@@ -99,18 +105,11 @@ public class NotificationHub : Hub
     {
         try
         {
-            var tokenUserId = Context.User?.FindFirst("id")?.Value;
-            if (string.IsNullOrEmpty(tokenUserId))
+            var senderUserId = Context.GetHttpContext()?.Request.Headers["UserId"].FirstOrDefault();
+            if (string.IsNullOrEmpty(senderUserId))
             {
-                _logger.LogWarning("User ID not found in token when sending notification");
-                throw new HubException("Unauthorized notification send");
-            }
-
-            // Only allow sending to own group or if user has admin role
-            if (userId != tokenUserId && !Context.User.IsInRole("Admin"))
-            {
-                _logger.LogWarning($"User {tokenUserId} attempted to send notification to user {userId}");
-                throw new HubException("Unauthorized notification send");
+                _logger.LogWarning("User ID not found in headers when sending notification");
+                throw new HubException("Unauthorized");
             }
 
             _logger.LogInformation($"Sending notification to user {userId}");
