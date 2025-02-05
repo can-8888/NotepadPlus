@@ -421,3 +421,4 @@ D:\_master\v5\NotepadPlus\Backend-dotnet\obj\Debug\net8.0\refint\NotepadPlusApi.
 D:\_master\v5\NotepadPlus\Backend-dotnet\obj\Debug\net8.0\NotepadPlusApi.pdb
 D:\_master\v5\NotepadPlus\Backend-dotnet\obj\Debug\net8.0\NotepadPlusApi.genruntimeconfig.cache
 D:\_master\v5\NotepadPlus\Backend-dotnet\obj\Debug\net8.0\ref\NotepadPlusApi.dll
+D:\_master\v5\NotepadPlus\Backend-dotnet\bin\Debug\net8.0\System.ClientModel.dll
