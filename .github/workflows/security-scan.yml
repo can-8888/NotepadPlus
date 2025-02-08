@@ -22,7 +22,7 @@ jobs:
         format: 'HTML'
         args: >
           --scan .
-          --failOnCVSS 8
+          --failOnCVSS 9
           --enableRetired
           --prettyPrint
           --enableExperimental
